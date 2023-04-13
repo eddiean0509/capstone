@@ -17,7 +17,7 @@ export default function Create() {
 
   // remote mutate
   const { data: post, trigger: createPost } = useSWRMutation(
-    `http://127.0.0.1:5000/post/`,
+    `${process.env.API_URL}/post/`,
     async (url, { arg }) => {
       const post = await fetch(url, {
         method: "POST",

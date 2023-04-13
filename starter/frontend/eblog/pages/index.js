@@ -25,7 +25,7 @@ export default function Home() {
 
   // post list
   const { data: posts, error } = useSWR(
-    `http://127.0.0.1:5000/post/?page=${page}&kw=${kw}`,
+    `${process.env.API_URL}/post/?page=${page}&kw=${kw}`,
     fetcher,
     {
       keepPreviousData: true,

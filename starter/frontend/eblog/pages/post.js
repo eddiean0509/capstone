@@ -27,7 +27,7 @@ export default function Post() {
     data: post,
     error,
     mutate,
-  } = useSWR(`http://127.0.0.1:5000/post/${router.query.id}/`, fetcher, {
+  } = useSWR(`${process.env.API_URL}/post/${router.query.id}/`, fetcher, {
     keepPreviousData: true,
     revalidateOnFocus: false,
   });
@@ -40,7 +40,7 @@ export default function Post() {
     }
     mutate(
       async () => {
-        const deleted = await fetch(`http://127.0.0.1:5000/post/${postId}`, {
+        const deleted = await fetch(`${process.env.API_URL}/post/${postId}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${accessToken}`,
